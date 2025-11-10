@@ -1,0 +1,17 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.simple
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    restart: unless-stopped
+    container_name: peeak-app
+    networks:
+      - peeak-network
+
+networks:
+  peeak-network:
+    driver: bridge
